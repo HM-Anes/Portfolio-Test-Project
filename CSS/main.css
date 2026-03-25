@@ -53,4 +53,88 @@ ul {
 /* End components */
 
 /* Start header */
+header {
+    background-color: #222;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+header .container {
+    padding: 10px 50px;
+    display: flex;
+    align-items: center;
+}
+/* logo part */
+/* header .logo {
+} */
+header .logo img {
+    width: 40px;
+}
+/* nav bar */
+header nav {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+header nav .toggle-menu {
+    color: #fff;
+    display: none;
+}
+header nav ul {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+}
+/* header nav ul li {
+} */
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+/* media query */
+@media (max-width: 767px) {
+    .container {
+        /* width: 750px; */
+        /* better */
+        width: 100%;
+        max-width: 750px;
+    }
+    /* ~ => selects elements that are on the same level in the HTML */
+    header nav .toggle-menu:hover ~ ul::before,
+    header nav .toggle-menu:hover ~ ul {
+        display: block;
+    }
+    header nav ul::before {
+        content: "";
+        position: absolute;
+        color: #222;
+        border: solid 14px;
+        border-color: transparent transparent #222 transparent;
+        top: -28px;
+        right: 14px;
+        display: none;
+    }
+    header nav ul {
+        flex-direction: column;
+        position: absolute;
+        right: -18px;
+        top: calc(50% + 50px);
+        background-color: #222;
+        gap: 0;
+        display: none;
+    }
+    header nav ul li {
+        margin: 15px 20px;
+        width: 130px;
+        text-align: left;
+        border-bottom: solid 2px #fff;
+        padding-bottom: 10px;
+    }
+    header nav .toggle-menu {
+        display: block;
+    }
+}
 /* End header */
