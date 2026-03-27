@@ -55,7 +55,7 @@ ul {
 
 /* Start header */
 header {
-    background-color: #222;
+    background-color: #000;
     height: 60px;
     display: flex;
     align-items: center;
@@ -108,9 +108,9 @@ header nav ul li a {
     header nav ul::before {
         content: "";
         position: absolute;
-        color: #222;
+        color: #000;
         border: solid 14px;
-        border-color: transparent transparent #222 transparent;
+        border-color: transparent transparent #000 transparent;
         top: -27px;
         right: 14px;
         display: none;
@@ -120,7 +120,7 @@ header nav ul li a {
         position: absolute;
         right: -18px;
         top: calc(50% + 50px);
-        background-color: #222;
+        background-color: #000;
         gap: 0;
         display: none;
     }
@@ -148,17 +148,35 @@ header nav ul li a {
     height: 380px;
     background-color: #333;
     border-bottom: solid #000 9px;
+    position: relative;
+    z-index: 1;
 }
-/* .home .back:hover {
-} */
+.home .back:hover {
+    position: absolute;
+    z-index: 2;
+    width: 80vh;
+    margin: 0 calc((100vw - 80vh) / 2);
+    border: none;
+    /* opacity: 10%; */
+    /* transform: scale(1.1); */
+}
+.home .back:hover ~ .container {
+    bottom: calc(((240px * 81.5) / 100) - 380px);
+}
+.home .back:hover ~ .container .image {
+    z-index: 1;
+}
 .home .container {
     display: flex;
     flex-direction: column;
     position: relative;
-    top: -29%;
+    bottom: calc((240px * 81.5) / 100);
+    height: calc(100vh - 60px - 380px);
 }
 .home .image {
+    width: 240px;
     position: relative;
+    z-index: 2;
 }
 .home .image::before {
     content: "";
@@ -179,15 +197,10 @@ header nav ul li a {
     flex-direction: column;
     text-align: center;
     gap: 20px;
+    color: #000;
 }
-/* .home .text h1 {
-} */
 .home .text h1 span,
 .home .text h4 span {
     color: #1e3a8a;
 }
-/* .home .text h4 {
-} */
-/* .home .text p {
-} */
 /* End home */
