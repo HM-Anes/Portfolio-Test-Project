@@ -1,7 +1,9 @@
 /* Start Variables */
 :root {
-    --main-color: ;
-    --secondary-color: ;
+    --bk-color: #000;
+    --bl-color: #1e3a8a;
+    --wh-color: #f5f5f5;
+    --scale: 1;
 }
 /* End Variables */
 
@@ -23,29 +25,28 @@ body {
 ul {
     list-style: none;
 }
+
 .container {
+    width: 100%;
     margin: 0 auto;
     padding: 0 15px;
 }
-
 /* small */
 @media (min-width: 768px) {
     .container {
-        width: 750px;
+        max-width: 750px;
     }
 }
-
-/* meduim */
+/* medium */
 @media (min-width: 992px) {
     .container {
-        width: 970px;
+        max-width: 970px;
     }
 }
-
 /* large */
 @media (min-width: 1200px) {
     .container {
-        width: 1170px;
+        max-width: 1170px;
     }
 }
 /* End global rules */
@@ -55,13 +56,12 @@ ul {
 
 /* Start header */
 header {
-    background-color: #000;
+    background-color: var(--bk-color);
     height: 60px;
     display: flex;
     align-items: center;
 }
 header .container {
-    padding: 10px 50px;
     display: flex;
     align-items: center;
 }
@@ -73,13 +73,14 @@ header .logo img {
 header nav {
     flex: 1;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
+    justify-content: flex-end;
     position: relative;
+    z-index: 3;
 }
 header nav .toggle-menu {
     background-color: transparent;
-    color: #fff;
+    color: var(--wh-color);
     display: none;
 }
 header nav ul {
@@ -90,49 +91,41 @@ header nav ul {
 }
 header nav ul li a {
     text-decoration: none;
-    color: #fff;
+    color: var(--wh-color);
 }
 /* media query */
 @media (max-width: 767px) {
-    .container {
-        /* width: 750px; */
-        /* better */
-        width: 100%;
-        max-width: 750px;
+    header nav .toggle-menu {
+        display: block;
+    }
+    header nav ul {
+        position: absolute;
+        background-color: var(--bk-color);
+        right: -6px;
+        top: calc(50% + 50px);
+        display: none;
+    }
+    header nav ul::before {
+        content: "";
+        position: absolute;
+        color: var(--bk-color);
+        border: solid 14px;
+        border-color: transparent transparent var(--bk-color) transparent;
+        top: -27px;
+        right: 6px;
+        display: none;
     }
     /* ~ => selects elements that are on the same level in the HTML */
     header nav .toggle-menu:hover ~ ul::before,
     header nav .toggle-menu:hover ~ ul {
         display: block;
     }
-    header nav ul::before {
-        content: "";
-        position: absolute;
-        color: #000;
-        border: solid 14px;
-        border-color: transparent transparent #000 transparent;
-        top: -27px;
-        right: 14px;
-        display: none;
-    }
-    header nav ul {
-        flex-direction: column;
-        position: absolute;
-        right: -18px;
-        top: calc(50% + 50px);
-        background-color: #000;
-        gap: 0;
-        display: none;
-    }
     header nav ul li {
+        text-align: left;
         margin: 15px 20px;
         width: 130px;
-        text-align: left;
-        border-bottom: solid 2px #fff;
+        border-bottom: solid 2px var(--wh-color);
         padding-bottom: 10px;
-    }
-    header nav .toggle-menu {
-        display: block;
     }
 }
 /* End header */
@@ -141,27 +134,28 @@ header nav ul li a {
 .home {
     display: flex;
     flex-wrap: wrap;
-    height: calc(100vh - 60px);
+    height: calc(125vh * var(--scale));
+    background-color: var(--wh-color);
 }
 .home .back {
     width: 100vw;
-    height: 380px;
-    background-color: #333;
-    border-bottom: solid #000 9px;
+    height: calc(42vh * var(--scale));
+    background-color: var(--bl-color);
+    border-bottom: solid var(--bk-color) 9px;
     position: relative;
     z-index: 1;
 }
 .home .back:hover {
     position: absolute;
     z-index: 2;
-    width: 80vh;
-    margin: 0 calc((100vw - 80vh) / 2);
+    width: 80vw;
+    margin: 0 calc((100vw - 80vw) / 2);
     border: none;
     /* opacity: 10%; */
     /* transform: scale(1.1); */
 }
 .home .back:hover ~ .container {
-    bottom: calc(((240px * 81.5) / 100) - 380px);
+    bottom: calc(((240px * 81) / 100) - (42vh * var(--scale)));
 }
 .home .back:hover ~ .container .image {
     z-index: 1;
@@ -170,8 +164,8 @@ header nav ul li a {
     display: flex;
     flex-direction: column;
     position: relative;
-    bottom: calc((240px * 81.5) / 100);
-    height: calc(100vh - 60px - 380px);
+    bottom: calc(((240px * 81) / 100));
+    height: calc(125vh - 42vh + ((240px * 81) / 100) * var(--scale));
 }
 .home .image {
     width: 240px;
@@ -185,8 +179,11 @@ header nav ul li a {
     height: 240px;
     border-radius: 50%;
     top: 0;
-    transform: rotate(90deg);
-    background-image: linear-gradient(to right, #000 81.5%, #fff 81.5%);
+    background-image: linear-gradient(
+        to bottom,
+        var(--bk-color) 81%,
+        var(--wh-color) 81%
+    );
 }
 .home .image img {
     width: 240px;
@@ -197,10 +194,32 @@ header nav ul li a {
     flex-direction: column;
     text-align: center;
     gap: 20px;
-    color: #000;
+    transform: translateY(-25%);
+    color: var(--bk-color);
 }
 .home .text h1 span,
 .home .text h4 span {
-    color: #1e3a8a;
+    color: var(--bl-color);
+}
+@media (max-height: 460px) {
+    .home .back {
+        border-width: 7px;
+    }
+    .home .container {
+        bottom: calc(((180px * 81) / 100) * var(--scale));
+        height: calc(125vh - 42vh + ((180px * 81) / 100) * var(--scale));
+    }
+    .home .image::before {
+        width: 180px;
+        height: 180px;
+    }
+    .home .image img {
+        width: 180px;
+    }
+}
+@media (min-height: 1100px) {
+    :root {
+        --scale: 0.5;
+    }
 }
 /* End home */
