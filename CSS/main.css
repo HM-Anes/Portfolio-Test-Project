@@ -161,6 +161,7 @@ header nav ul li a {
     bottom: calc(((240px * 81) / 100));
     gap: 75px;
 }
+/* image part */
 .home .image {
     position: relative;
 }
@@ -182,6 +183,7 @@ header nav ul li a {
     position: relative;
     z-index: 2;
 }
+/* text part */
 .home .text {
     display: flex;
     flex-direction: column;
@@ -193,6 +195,7 @@ header nav ul li a {
 .home .text h4 span {
     color: var(--bl-color);
 }
+/* media query */
 @media (max-height: 460px) {
     .home .back {
         height: 240px;
@@ -219,6 +222,7 @@ header nav ul li a {
 .tech .container {
     flex-direction: column;
 }
+/* All Skills */
 .tech .cards {
     width: 80%;
     flex: 1;
@@ -246,6 +250,7 @@ header nav ul li a {
 .tech .card:hover {
     transform: rotateY(180deg);
 }
+/* Front face and Back face */
 .tech .card .face {
     position: absolute;
     width: 100%;
@@ -265,30 +270,39 @@ header nav ul li a {
     font-size: 24px;
     transform: rotateY(180deg);
 }
+/* Html */
 .tech .card.Html .face {
     color: var(--Html-color);
 }
+/* Css */
 .tech .card.Css .face {
     color: var(--Css-color);
 }
+/* Js */
 .tech .card.Js .face {
     color: var(--Js-color);
 }
+/* Git */
 .tech .card.Git .face {
     color: var(--Git-color);
 }
+/* Github */
 .tech .card.Github .face {
     color: var(--Github-color);
 }
+/* Vs code */
 .tech .card.Vs .face {
     color: var(--Vscode-color);
 }
+/* Linux */
 .tech .card.Linux .face {
     color: var(--Linux-color);
 }
+/* Bash */
 .tech .card.Bash .face {
     color: var(--Bash-color);
 }
+/* media query */
 @media (max-width: 767px) {
     .tech .card {
         width: 100px;
