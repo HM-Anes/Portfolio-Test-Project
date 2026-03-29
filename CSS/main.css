@@ -252,18 +252,18 @@ header nav ul li a {
     height: 100%;
     justify-content: center;
     font-weight: bold;
-    font-size: 24px;
     color: white;
     backface-visibility: hidden;
 }
-.tech .card .back {
-    transform: rotateY(180deg);
-}
-.tech .card i {
+.tech .card .face.front i {
     font-size: 50px;
 }
-.tech .card img {
+.tech .card .face.front img {
     width: 60px;
+}
+.tech .card .face.back {
+    font-size: 24px;
+    transform: rotateY(180deg);
 }
 .tech .card.Html .face {
     color: var(--Html-color);
@@ -293,6 +293,9 @@ header nav ul li a {
     .tech .card {
         width: 100px;
         height: 100px;
+    }
+    .tech .card .face.back {
+        font-size: 17px;
     }
 }
 /* End Tech */
