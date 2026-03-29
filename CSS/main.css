@@ -8,7 +8,7 @@
     --Css-color: #1572b6;
     --Js-color: #f7df1e;
     --Git-color: #f05032;
-    --Github-color: #181717;
+    --Github-color: #ffffff;
     --Linux-color: #fcc624;
     --Vscode-color: #007acc;
     --Bash-color: #4eaa25;
@@ -60,11 +60,13 @@ ul {
 /* End global rules */
 
 /* Start components */
+.flex {
+    display: flex;
+    align-items: center;
+}
 .container > h1 {
     align-self: center;
-    display: flex;
     justify-content: center;
-    align-items: center;
     color: var(--wh-color);
     background-color: rgba(245, 245, 245, 10%);
     width: 320px;
@@ -77,12 +79,6 @@ ul {
 header {
     background-color: var(--bk-color);
     height: 60px;
-    display: flex;
-    align-items: center;
-}
-header .container {
-    display: flex;
-    align-items: center;
 }
 /* logo part */
 header .logo img {
@@ -91,8 +87,6 @@ header .logo img {
 /* nav bar */
 header nav {
     flex: 1;
-    display: flex;
-    align-items: center;
     justify-content: flex-end;
     position: relative;
     z-index: 3;
@@ -151,7 +145,6 @@ header nav ul li a {
 
 /* Start home */
 .home {
-    display: flex;
     flex-direction: column;
     background-color: var(--wh-color);
 }
@@ -224,9 +217,7 @@ header nav ul li a {
     display: flex;
 }
 .tech .container {
-    display: flex;
     flex-direction: column;
-    align-items: center;
 }
 .tech .cards {
     width: 80%;
@@ -234,17 +225,13 @@ header nav ul li a {
     margin: 30px 0;
     padding: 15px;
     border-radius: 20px;
-    display: flex;
     justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
     gap: 25px;
     perspective: 1000px;
 }
 .tech .card {
-    display: flex;
     justify-content: center;
-    align-items: center;
     color: var(--wh-color);
     background-color: var(--bk-color);
     font-weight: bold;
@@ -259,19 +246,17 @@ header nav ul li a {
 .tech .card:hover {
     transform: rotateY(180deg);
 }
-.card .face {
+.tech .card .face {
     position: absolute;
     width: 100%;
     height: 100%;
-    display: flex;
     justify-content: center;
-    align-items: center;
     font-weight: bold;
     font-size: 24px;
     color: white;
     backface-visibility: hidden;
 }
-.card .back {
+.tech .card .back {
     transform: rotateY(180deg);
 }
 .tech .card i {
@@ -280,26 +265,24 @@ header nav ul li a {
 .tech .card img {
     width: 60px;
 }
-.tech .card.Html i,
 .tech .card.Html .face {
     color: var(--Html-color);
 }
-.tech .card.Css i,
 .tech .card.Css .face {
     color: var(--Css-color);
 }
-.tech .card.Js i,
 .tech .card.Js .face {
     color: var(--Js-color);
 }
-.tech .card.Git i,
 .tech .card.Git .face {
     color: var(--Git-color);
+}
+.tech .card.Github .face {
+    color: var(--Github-color);
 }
 .tech .card.Vs .face {
     color: var(--Vscode-color);
 }
-.tech .card.Linux i,
 .tech .card.Linux .face {
     color: var(--Linux-color);
 }
